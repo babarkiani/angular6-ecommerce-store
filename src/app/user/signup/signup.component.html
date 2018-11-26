@@ -1,0 +1,54 @@
+<app-header pageTitle="Signup" iconTitle="account_circle" helptitle="SettingsPageHelp"></app-header>
+<mat-card>
+
+<mat-card-content>
+    <mat-divider></mat-divider>
+   <!-- <mat-card-actions *ngIf="error">
+       <mat-error>Signing Up credentials are not verified. Here is the error: {{ error }}</mat-error>
+    </mat-card-actions> -->
+    <mat-error *ngIf="dataLoading">
+      <mat-progress-bar mode="indeterminate" color="primary" [value]="15"></mat-progress-bar>
+    </mat-error>
+    <!-- <mat-error *ngIf="brokenNetwork" class="label-error">Network Connection Error.</mat-error> -->
+    <mat-card-actions style="align-content:start">
+      <button (click)="signup()" mat-raised-button color="primary">Sign-up</button>
+      <!--<button type="button" routerLink="/shopping" mat-raised-button color="primary">Browse as Guest</button>-->
+    </mat-card-actions>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="name" name="name" [(ngModel)]="user.name" required>
+      </mat-form-field>
+      <!-- <mat-error *ngIf="name.invalid && (name.dirty || name.touched)">Please enter a valid User Name.</mat-error> -->
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="email" name="email" [(ngModel)]="user.email">
+    </mat-form-field>
+    <!-- <mat-error *ngIf="email.invalid && (email.dirty || email.touched)">Please enter a valid email.</mat-error> -->
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="app password" name="password" [(ngModel)]="user.password" minlength="5"
+        maxlength="30">
+    </mat-form-field>
+    <!-- <span *ngIf="password.invalid && (password.dirty || password.touched)">
+      <mat-error *ngIf="password.errors['required']">Password is Required.</mat-error>
+      <mat-error *ngIf="password.errors['minlength']">Password can't be less than 5 characters.</mat-error>
+      <mat-error *ngIf="password.errors['maxlength']">Password can't be more than 30 characters.</mat-error>
+    </span> -->
+
+</mat-card-content>
+ <mat-card-content > <!--*ngIf="socialAuth" -->
+    <mat-chip-list class="mat-chip-list-stacked" style="margin-left: 170px;">
+      <mat-chip color="primary" selected="true" (click)="login('FB')">
+        Login With Facebook
+      </mat-chip>
+      <mat-chip color="warn" selected="true" (click)="login('GOOGLE')">
+        Login With Google
+      </mat-chip>
+    </mat-chip-list>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-divider></mat-divider>
+    <button mat-button routerLink="/signup">
+      No account?
+      <strong>Create one with your email here</strong>
+    </button>
+  </mat-card-actions>
+
+</mat-card>
